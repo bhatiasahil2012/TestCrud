@@ -1,0 +1,15 @@
+<% if @users %>
+		<table>
+		<th>Name</th>
+		<th>Password</th>
+		<%@users.each do |user|%>
+			<tr><td><%=user.name%></td><td><%=user.password%></td>
+			<td><%=link_to 'show', :id => user.id, :controller => 'users',:action=>'show'  %></td>
+			<td><%=link_to 'edit', :action=>'edit', :id => user.id %></td>
+			<td><%=link_to 'Delete',:controller=>'users' ,:action=>'delete', :id =>user.id %></td></tr>
+		<% end %>
+		<tr><td>
+		<%=link_to 'Add new User', :action=>'new'%></td></tr>
+	<% else %>
+		<h1>No records found</h1>
+<% end %>
